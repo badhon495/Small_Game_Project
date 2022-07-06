@@ -1,1 +1,1 @@
-just making some random beginner gaming project with python
+just making some random beginner game project with python

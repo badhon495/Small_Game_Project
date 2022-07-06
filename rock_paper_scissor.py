@@ -1,7 +1,7 @@
 import random
 
-name = input("Please input your name: ")
-print(f'Hello {name}, Welcome to the game')
+
+print(f'Welcome to the game')
 
 rpc = ['ROCK', 'SCISSOR', 'PAPER']
 
@@ -10,8 +10,7 @@ user_win_count = 0
 want_to_play = "Y"
 
 while True:
-    bot_input = random.randint(0, 2)
-    user_input = input("Please type Rock, Paper or Scissor: ").upper()
+
     if bot_win_count == 2:
         print("You lost. try again")
         want_to_play = input("Press Y to play again or N to end: ").upper()
@@ -30,9 +29,11 @@ while True:
         else:
             break
 
+    bot_input = random.randint(0, 2)
+    user_input = input("Please type Rock, Paper or Scissor: ").upper()
+
     if rpc[bot_input] == user_input:
         print("its a draw")
-        print(rpc[bot_input])
         pass
 
     elif (user_input == "ROCK" and rpc[bot_input] == 'PAPER') or (
@@ -41,7 +42,9 @@ while True:
         bot_win_count += 1
         print(f"You lost {bot_win_count} times")
 
-    # elif user_input== "" 'PAPER' and rpc[bot_input] == "ROCK" or (rpc[bot_input]== "PAPER" and  user_input== 'SCISSOR') or (rpc[bot_input]== "SCISSOR" and  user_input== 'ROCK'):
-    else:
+    elif user_input== "" 'PAPER' and rpc[bot_input] == "ROCK" or (rpc[bot_input]== "PAPER" and  user_input== 'SCISSOR') or (rpc[bot_input]== "SCISSOR" and  user_input== 'ROCK'):
         user_win_count += 1
         print(f"You won {user_win_count} times")
+
+    else:
+        print("Write properly")

@@ -1,49 +1,26 @@
 import random
+start = input("Start Point: ")
+end = input("End Point: ")
+secret_number = random.randint(int(start), int(end))
+random_chance = random.randint(1,10)
 
-print('Welcome to the game')
-rpc = ['ROCK', 'SCISSOR', 'PAPER']
+print(f"Guess a number between {start} to {end}\nYou will get {random_chance} chances. ")
 
-bot_win_count = 0
-user_win_count = 0
-want_to_play = "Y"
 
-while True:
-    if bot_win_count == 2:
-        print("You lost. try again")
-        want_to_play = input("Press Y to play again or N to end: ").upper()
-        if want_to_play == 'Y':
-            user_win_count = 0
-            bot_win_count = 0
-        else:
-            break
+for i in range(random_chance):
+    track = i
+    guess = int(input("Enter your guess: "))
 
-    if user_win_count == 2:
-        print("You won")
-        want_to_play = input("Press Y to play again or N to end: ").upper()
-        if want_to_play == 'Y':
-            user_win_count = 0
-            bot_win_count = 0
-        else:
-            break
+    if guess > secret_number:
+        print("Your guess is too high")
 
-    bot_input = random.randint(0, 2)
-    user_input = input("Please type Rocck\Paper\Scissor: ").upper()
-
-    if rpc[bot_input] == user_input:
-        print("its a draw")
-        pass
-
-    elif (user_input == "ROCK" and rpc[bot_input] == 'PAPER') or (
-            user_input == "PAPER" and rpc[bot_input] == 'SCISSOR') or (
-            user_input == "SCISSOR" and rpc[bot_input] == 'ROCK'):
-        bot_win_count += 1
-        print(f"You lost {bot_win_count} times")
-
-    elif user_input == "" 'PAPER' and rpc[bot_input] == "ROCK" or (
-            rpc[bot_input] == "PAPER" and user_input == 'SCISSOR') or (
-            rpc[bot_input] == "SCISSOR" and user_input == 'ROCK'):
-        user_win_count += 1
-        print(f"You won {user_win_count} times")
+    elif guess < secret_number :
+        print("Your guess is too low")
 
     else:
-        print("Dont enter something other then Please type Rocck\Paper\Scissor")
+        break
+
+if guess == secret_number:
+    print(f"congo! you won. it took {i+1} tires")
+else:
+    print("Better luck next time")
